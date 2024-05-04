@@ -10,8 +10,8 @@ class Manga extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function anime()
+    public function animes()
     {
-        return $this->belongsToMany(Anime::class)->optional();
+        return $this->hasMany(Anime::class);
     }
 }

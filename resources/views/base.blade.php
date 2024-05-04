@@ -52,6 +52,10 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Route::current()->getName() == 'status.create' ? 'active' : '' }} btn btn-link text-white" href="{{ route('status.create') }}">New Status</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::current()->getName() == 'mangas.create' ? 'active' : '' }} btn btn-link text-white" href="{{ route('mangas.create') }}">New Manga</a>
+                        </li>
+
                         @endcan
                     </ul>
                     <ul class="navbar-nav ms-auto">

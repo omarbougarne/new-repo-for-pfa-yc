@@ -97,27 +97,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/episodes/{id}/edit', [EpisodesController::class, 'edit'])->name('episodes.edit');
     Route::put('/episodes/{id}', [EpisodesController::class, 'update'])->name('episodes.update');
     Route::delete('/episodes/{id}', [EpisodesController::class, 'destroy'])->name('episodes.destroy');
-    // Index route (GET)
-Route::get('mangas', [MangaController::class, 'index'])->name('mangas.index');
 
-// Create route (GET)
-Route::get('mangas/create', [MangaController::class, 'create'])->name('mangas.create');
-
-// Store route (POST)
-Route::post('mangas', [MangaController::class, 'store'])->name('mangas.store');
-
-// Show route (GET)
-Route::get('mangas/{manga}', [MangaController::class, 'show'])->name('mangas.show');
-
-// Edit route (GET)
-Route::get('mangas/{manga}/edit', [MangaController::class, 'edit'])->name('mangas.edit');
-
-// Update route (PUT/PATCH)
-Route::put('mangas/{manga}', [MangaController::class, 'update'])->name('mangas.update');
-Route::patch('mangas/{manga}', [MangaController::class, 'update']);
-
-// Delete route (DELETE)
-Route::delete('mangas/{manga}', [MangaController::class, 'destroy'])->name('mangas.destroy');
+    Route::get('mangas', [MangaController::class, 'index'])->name('mangas.index');
+    Route::get('mangas/create', [MangaController::class, 'create'])->name('mangas.create');
+    Route::post('mangas', [MangaController::class, 'store'])->name('mangas.store');
+    Route::get('mangas/{manga}', [MangaController::class, 'show'])->name('mangas.show');
+    Route::get('mangas/{manga}/edit', [MangaController::class, 'edit'])->name('mangas.edit');
+    Route::put('mangas/{manga}', [MangaController::class, 'update'])->name('mangas.update');
+    Route::patch('mangas/{manga}', [MangaController::class, 'update']);
+    Route::delete('mangas/{manga}', [MangaController::class, 'destroy'])->name('mangas.destroy');
 
 
 

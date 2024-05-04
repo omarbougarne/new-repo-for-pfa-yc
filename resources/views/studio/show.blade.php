@@ -6,17 +6,20 @@
             <img src="{{ url("storage/{$studio->image}") }}" class="img-fluid rounded-start" alt="">
         </div>
         <div class="col">
-            <h3>{{ $studio->name }}</h3>
+            <h3 class="text-white fw-bold">{{ $studio->name }}</h3>
             <hr>
-            <div>
-                <strong>Description:</strong> <br>
-                <span>{{ $studio->description }}</span>
+            <div class="" style="width: 100%;">
+                <strong class="text-white">Description:</strong> <br>
+                <span class="fs-5 text-white">{{ $studio->description }}</span>
             </div>
-            <div class="mt-2">
-                <strong>Created:</strong> <br>
-                 <span>{{ $studio->established }}</span>
+            <div class="mt-2 ">
+                <strong class="text-white">Created:</strong> <br>
+                <span class="fs-5 text-white">{{ $studio->established }}</span>
             </div>
-            <ul class="nav justify-content-center">
+
+
+
+            <ul class="nav justify-content-center mt-3">
                 <li class="nav-item">
                     <a href="{{ route('studios.index') }}" class="button-18 color-default">Show</a>
                 </li>

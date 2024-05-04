@@ -38,7 +38,6 @@
 
                 <div class="text-center my-4">
                     <input type="submit" class="btn btn-primary col-6 my-1" value="Add">
-                    <input type="reset" class="btn btn-danger col-6 my-1" value="Reset">
                 </div>
             </form>
         </div>

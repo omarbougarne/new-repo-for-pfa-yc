@@ -24,9 +24,6 @@
             <div class="col-sm-6">
                 <strong>Studio: </strong><a class="link-studio" href="{{ route('studios.show', $anime->studio->id) }}">{{ $anime->studio->name }}</a>
             </div>
-            <div class="col-sm-6 text-sm-right">
-                <strong>Source: </strong>{{ $anime->source }}
-            </div>
         </div>
         <ul class="nav justify-content-center mt-3">
             <li class="nav-item">

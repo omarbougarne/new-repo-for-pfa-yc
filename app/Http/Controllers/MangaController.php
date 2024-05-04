@@ -50,18 +50,19 @@ class MangaController extends Controller
      */
     public function show(string $id)
     {
-        $manga = Manga::findOrFail($id);
-        return view('mangas.show', compact('manga'));
+        $mangas = Manga::findOrFail($id);
+        return view('mangas.show', compact('mangas'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        $manga = Manga::findOrFail($id);
-        return view('mangas.edit', compact('mangas'));
-    }
+{
+    $manga = Manga::findOrFail($id); // Change variable name to $manga
+    return view('mangas.edit', compact('manga')); // Pass $manga to the view
+}
+
 
     /**
      * Update the specified resource in storage.

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("synopsis", 6000);
             $table->string('image');
             $table->decimal('score', 4, 2);
+            $table->foreignId('manga_id')->nullable()->constrained('mangas');
             $table->timestamps();
         });
     }

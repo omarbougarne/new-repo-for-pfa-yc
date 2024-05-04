@@ -30,7 +30,6 @@ class StatusController extends Controller
 
         $status = new Status();
         $status->name = $request->input('name');
-        $status->description = $request->input('description');
         $status->save();
 
         return redirect(route('status.index'));
@@ -52,7 +51,6 @@ class StatusController extends Controller
         $status = Status::find($id);
 
         $status->name = $request->input('name');
-        $status->description = $request->input('description');
 
         $status->save();
 
@@ -79,7 +77,6 @@ class StatusController extends Controller
     {
         $rules = [
             'name' => 'required|max:100',
-            'description' => 'required|max:400'
         ];
         return $rules;
     }
@@ -88,7 +85,6 @@ class StatusController extends Controller
     {
         $msg = [
             'name.*' => '',
-            'description.*' => ''
         ];
         return $msg;
     }

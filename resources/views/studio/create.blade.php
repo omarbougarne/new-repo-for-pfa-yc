@@ -8,8 +8,8 @@
             {{-- protection against cross-site request forgering --}}
             @csrf
             <div class="mb-2 col-6 mx-auto">
-                <label for="name" class="form-label fw-bold">➤ Name</label>
-                <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
+                <label for="name" class="form-label fw-bold text-info">➤ Name</label>
+                <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder=" name">
                 @error('name')
                 <div class="text-danger">
                     {{ $message }}
@@ -17,8 +17,8 @@
                 @enderror
             </div>
             <div class="mb-2 col-6 mx-auto">
-                <label for="image" class="form-label fw-bold">➤ Image</label>
-                <input type="file" class="form-control" name="image" id="image" value="{{ old('image') }}">
+                <label for="image" class="form-label fw-bold text-info">➤ Image</label>
+                <input type="file" class="form-control" name="image" id="image" value="{{ old('image') }}" placeholder="Select image">
                 @error('image')
                 <div class="text-danger">
                     {{ $message }}
@@ -26,8 +26,8 @@
                 @enderror
             </div>
             <div class="mb-2 col-6 mx-auto">
-                <label for="description" class="form-label fw-bold">➤ Description</label>
-                <textarea type="text" class="form-control" name="description" id="description">{{ old('description') }}</textarea>
+                <label for="description" class="form-label fw-bold text-info">➤ Description</label>
+                <textarea type="text" class="form-control" name="description" id="description" placeholder=" description">{{ old('description') }}</textarea>
                 @error('description')
                 <div class="text-danger">
                     {{ $message }}
@@ -35,8 +35,8 @@
                 @enderror
             </div>
             <div class="mb-2 col-6 mx-auto">
-                <label for="established" class="form-label fw-bold">➤ Created at</label>
-                <input type="input" class="form-control" name="established" id="established" value="{{ old('established') }}">
+                <label for="established" class="form-label fw-bold text-info">➤ Created at</label>
+                <input type="input" class="form-control" name="established" id="established" value="{{ old('established') }}" placeholder=" creation date">
                 @error('established')
                 <div class="text-danger">
                     {{ $message }}
@@ -44,10 +44,8 @@
                 @enderror
             </div>
             <div class="text-center my-4 col-12 mx-auto">
-                <input type="submit" class="btn btn-outline-primary col-6 my-1" value="Add">
-                <input type="reset" class="btn btn-outline-danger col-6 my-1" value="Reset">
+                <input type="submit" class="btn btn-primary col-6 my-1" value="Add">
             </div>
         </form>
     </div>
-
 @endsection

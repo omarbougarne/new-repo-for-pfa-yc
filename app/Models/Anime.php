@@ -48,7 +48,7 @@ public function users()
     }
     public function manga()
     {
-        return $this->belongsToMany(Manga::class)->optional();
+        return $this->belongsTo(Manga::class);
     }
 
 }

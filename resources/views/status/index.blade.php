@@ -6,13 +6,12 @@ inherit from view base
     @if (!is_null($status))
         <table id="tabelaStatus" class="table table-striped" style="padding-top: 10px;">
             <thead>
-                <tr class="table-dark">
-                    <th colspan="2" class="text-center">Status</th>
-                    <th colspan="2" class="text-center">Options</th>
+                <tr class="table-dark" style="background: linear-gradient(to right, #494f55, #3355b0);">
+                    <th colspan="2" style="padding-left: 90px;">Studio</th>
+                    <th colspan="2" class=" text-white pl-5">Options</th>
                 </tr>
                 <tr>
                     <th>Name</th>
-                    <th>Desc</th>
                     <th class="text-center"></th>
                     <th class="text-center"></th>
                 </tr>
@@ -20,22 +19,22 @@ inherit from view base
             <tbody>
                 @foreach ($status as $status)
                     <tr>
-                        <td class="align-middle">{{ $status->name }}</td>
-                        <td class="align-middle">{{ $status->description }}</td>
-                        <td class="align-middle">
-                            <a href="{{ route('status.edit', $status->id) }}" class="btn btn-link" style="text-decoration: none">
-                                <i class="fa-solid fa-pen-to-square text-primary"></i> Edit
+                        <td class="align-middle fw-bold text-white">{{ $status->name }}</td>
+                        <td class="align-middle text-end">
+                            <a href="{{ route('status.edit', $status->id) }}" class="btn btn-link " style="text-decoration: none; color: white; ">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
                             </a>
                         </td>
-                        <td class="align-middle">
+                        <td class="align-middle text-end">
                             <form action="{{ route('status.destroy', $status->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-link" style="text-decoration: none" type="submit">
-                                    <i class="fa-solid fa-trash text-danger"></i> Delete
+                                <button class="btn btn-link text-danger" style="text-decoration: none" type="submit">
+                                    <i class="fa-solid fa-trash"></i> Delete
                                 </button>
                             </form>
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
@@ -45,16 +44,3 @@ inherit from view base
     @endif
 @endsection
 
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <span class="badge {{ $status->color }}"> --}}

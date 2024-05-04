@@ -43,25 +43,6 @@
                 </div>
             @enderror
         </div>
-        {{-- <div class="mb-2 col-6 mx-auto">
-            <label for="episodes" class="form-label fw-bold">➤ Episodes</label>
-            <input type="number" class="form-control" name="episodes" id="episodes"
-                value="{{ old('episodes') ? old('episodes') : $anime->episodes }}">
-            @error('episodes')
-                <div class="text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div> --}}
-        <div class="mb-2 col-6 mx-auto">
-            <label for="source" class="form-label fw-bold">➤ Source</label>
-            <input type="text" class="form-control" name="source" id="source" value="{{ old('source') ? old('source') : $anime->source }}">
-            @error('source')
-                <div class="text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
         <div class="mb-2 col-6 mx-auto">
             <label for="studio" class="form-label fw-bold">➤ Studio</label>
             <select class="form-select" name="studio" id="studio">
@@ -85,8 +66,7 @@
             </select>
         </div>
         <div class="text-center my-4 col-12 mx-auto">
-            <input type="submit" class="btn btn-outline-primary col-6 my-1" value="Add">
-            <input type="reset" class="btn btn-outline-danger col-6 my-1" value="Reset">
+            <input type="submit" class="btn btn-primary col-6 my-1" value="Add">
         </div>
     </form>
 @endsection

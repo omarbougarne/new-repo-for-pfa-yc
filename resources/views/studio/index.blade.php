@@ -28,8 +28,8 @@
                         <td class="align-middle text-center">
                             <img src="{{ url("storage/{$studio->image}") }}" class="img-fluid rounded-circle border border-1" style="width: 6rem; height: auto;">
                         </td>
-                        <td class="align-middle text-center fw-bold">{{ $studio->name }}</td>
-                        <td class="align-middle text-center fw-bold">{{ $studio->established }}</td>
+                        <td class="align-middle text-center fw-bold text-white">{{ $studio->name }}</td>
+                        <td class="align-middle text-center fw-bold text-white">{{ $studio->established }}</td>
                         <td class="align-middle text-center">
                             <a href="{{ route('studios.show', $studio->id) }}" class="btn btn-link text-info" style="text-decoration: none;"><i class="fa-solid fa-circle-info"></i> Show</a>
                         </td>

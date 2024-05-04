@@ -42,8 +42,10 @@ public function store(Request $request, $anime_id)
 
     $episode->save();
 
-    return redirect()->route('episodes.index');
+    // Redirect to the episodes index for the specific anime
+    return redirect()->route('episodes.index', $anime_id);
 }
+
 
 public function edit($id)
 {

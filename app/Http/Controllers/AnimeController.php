@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Anime;
 use App\Models\Comment;
+use App\Models\Studio;
+use App\Models\Status;
 use App\Models\Manga;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -112,31 +114,34 @@ public function create()
 }
 
 
-    public function store(Request $request)
+public function store(Request $request)
 {
-    $request->validate($this->getRules());
+    try {
+        $request->validate($this->getRules());
 
-    $anime = new Anime();
-    $anime->title = $request->input('title');
-    $anime->synopsis = $request->input('synopsis');
-    $anime->score = $request->input('score');
+        $anime = new Anime();
+        $anime->title = $request->input('title');
+        $anime->synopsis = $request->input('synopsis');
+        $anime->score = $request->input('score');
 
-    if ($request->image) {
-        $anime->image = $request->image->store('images', 'public');
+        if ($request->image) {
+            $anime->image = $request->image->store('images', 'public');
+        }
+
+        // Get the manga name based on the manga_id
+        $mangaName = Manga::findOrFail($request->input('manga_id'))->name;
+        $anime->studio_id = $request->input('studio');
+        $anime->statu_id = $request->input('statu');
+        $anime->save();
+
+        return redirect(route('animes.index'));
+    } catch (\Exception $e) {
+        // Log or display the error message
+        dd($e->getMessage());
     }
-
-    // Get the manga name based on the manga_id
-    $mangaName = Manga::findOrFail($request->input('manga_id'))->name;
-    $anime->manga_name = $mangaName;
-    $anime->studio_id = $request->input('studio');
-    $anime->statu_id = $request->input('statu');
-    $anime->save();
-
-
-    $anime->save();
-
-    return redirect(route('animes.index'));
 }
+
+
 
 
     public function updateRating(Request $request, $id)
@@ -210,8 +215,7 @@ public function create()
             $anime->image = $request->image->store('images' , 'public');
         }
 
-        // $anime->episodes = $request->input('episodes');
-        // $anime->source = $request->input('source');
+
         $anime->studio_id = $request->input('studio');
         $anime->statu_id = $request->input('statu');
 
@@ -314,8 +318,6 @@ public function create()
             'synopsis' => 'required|max:3000',
             'score' => 'required|numeric|between:0,10',
             'image' => 'required|mimes:jpg,jpeg,png',
-            // 'episodes' => 'required|numeric',
-            'source' => 'required|max:30'
         ];
         return $rules;
     }
@@ -327,8 +329,6 @@ public function create()
             'synopsis.*' => '',
             'image.*' => '',
             'score.*' => '',
-            // 'episodes.*' => '',
-            // 'source.*' => ''
         ];
         return $msg;
     }
