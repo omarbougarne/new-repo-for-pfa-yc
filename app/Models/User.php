@@ -15,7 +15,7 @@ class User extends Authenticatable // Extend Authenticatable directly
 
     public function animes()
     {
-        return $this->belongsToMany(Anime::class)->withPivot('watched', 'rating')->withTimestamps();
+        return $this->belongsToMany(Anime::class)->withPivot('rating')->withTimestamps();
     }
     public function comments()
     {

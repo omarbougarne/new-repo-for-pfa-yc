@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string("title", 300);
             $table->string("synopsis", 6000);
             $table->string('image');
-            $table->decimal('score', 4, 2);
+            $table->decimal('score', 4, 2)->nullable()->default(null);
             $table->foreignId('manga_id')->nullable()->constrained('mangas');
+            $table->enum('status', ['plan to watch', 'completed', 'dropped'])->default(null);
             $table->timestamps();
         });
     }

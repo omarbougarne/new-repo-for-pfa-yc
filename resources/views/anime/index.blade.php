@@ -23,10 +23,7 @@
                         <div class="card h-99">
                             <img src="{{ url("storage/{$anime->image}") }}" class="card-img card-img-top" alt="Cover of the anime {{ $anime->title }}">
                             <div class="card-img-overlay d-flex flex-column justify-content-between">
-                                <div>
-                                    <span class="badge {{ $anime->statu->color }} mb-1">{{ $anime->statu->name }}</span>
-                                    <h4 class="text-white">{{ $anime->title }}</h4>
-                                </div>
+
                                 <div class="d-flex justify-content-end">
                                     <a href="{{ route('animes.show', $anime->id) }}" class="btn btn-primary btn-round" style="width: 49%">
                                         <i class="fa fa-eye"></i>

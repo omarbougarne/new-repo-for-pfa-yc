@@ -6,7 +6,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EpisodesController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +53,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //Animes: User List
-    Route::patch('/animes/update_watched/{id}', [AnimeController::class, 'updateWatched'])->name('animes.update_watched');
+    // Route::patch('/animes/update_watched/{id}', [AnimeController::class, 'updateWatched'])->name('animes.update_watched');
     Route::get('/animes/add/{id}', [AnimeController::class, 'addToUserList'])->name('animes.addToUserList');
     Route::get('/animes/remove/{id}', [AnimeController::class, 'removeFromUserList']);
     // Route::delete('/animes/{id}', [AnimeController::class, 'removeFromList'])->name('animes.removeFromList');
@@ -83,13 +82,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/studios', [StudioController::class, 'index'])->name('studios.index');
     //Studios: User
     Route::get('/studios/{id}', [StudioController::class, 'show'])->name('studios.show');
-    //Status: Admin Control
-    Route::get('/status/create', [StatusController::class, 'create'])->name('status.create');
-    Route::post('/status/store', [StatusController::class, 'store'])->name('status.store');
-    Route::put('/status/{id}/update', [StatusController::class, 'update'])->name('status.update');
-    Route::get('/status/{id}/edit', [StatusController::class, 'edit'])->name('status.edit');
-    Route::delete('/status/{id}/destroy', [StatusController::class, 'destroy'])->name('status.destroy');
-    Route::get('/status', [StatusController::class, 'index'])->name('status.index');
     //Episodes: Admin Control
     Route::get('/episodes/create/{anime_id}', [EpisodesController::class, 'create'])->name('episodes.create');
     Route::get('/animes/{anime_id}/episodes', [EpisodesController::class, 'index'])->name('episodes.index');
@@ -106,6 +98,20 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::put('mangas/{manga}', [MangaController::class, 'update'])->name('mangas.update');
     Route::patch('mangas/{manga}', [MangaController::class, 'update']);
     Route::delete('mangas/{manga}', [MangaController::class, 'destroy'])->name('mangas.destroy');
+    //test
+    Route::delete('/animes/user_list/{id}', [AnimeController::class, 'removeFromUserList'])->name('animes.removeFromUserList');
+    Route::get('/animes/user_list/{id}/edit', [AnimeController::class, 'editInUserList'])->name('animes.editInUserList');
+    // web.php
+Route::post('/animes/{anime}/adduserrating', [AnimeController::class, 'addUserRating'])->name('animes.adduserrating');
+Route::patch('/animes/{anime}/edituserrating', [AnimeController::class, 'editUserRating'])->name('animes.edituserrating');
+Route::delete('/animes/{anime}/deleteuserrating', [AnimeController::class, 'deleteUserRating'])->name('animes.deleteuserrating');
+Route::patch('/animes/{anime}/updatestatus', [AnimeController::class, 'updateStatus'])->name('animes.updatestatus');
+
+
+
+
+
+
 
 
 

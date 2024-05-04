@@ -15,19 +15,15 @@ class Anime extends Model
         'title',
         'synopsis',
         'score',
+        'status',
     ];
 
     //..eager loading
-    protected $with = ['studio', 'statu'];
+    protected $with = ['studio'];
 
     //..define the relationship with Studio
     public function studio(){
         return $this->belongsTo(Studio::class);
-    }
-
-    //..define the relationship with Studio
-    public function statu(){
-        return $this->belongsTo(Status::class);
     }
 
     // public function users(){
@@ -44,7 +40,7 @@ class Anime extends Model
 }
 public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('watched', 'rating')->withTimestamps();
+        return $this->belongsToMany(User::class)->withPivot( 'rating')->withTimestamps();
     }
     public function manga()
     {

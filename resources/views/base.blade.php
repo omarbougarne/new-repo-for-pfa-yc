@@ -39,18 +39,12 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Route::current()->getName() == 'studios.index' ? 'active' : '' }} btn btn-link text-white" href="{{ route('studios.index') }}">Studios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::current()->getName() == 'status.index' ? 'active' : '' }} btn btn-link text-white" href="{{ route('status.index') }}">Status</a>
-                        </li>
                         @can('isAdmin')
                         <li class="nav-item">
                             <a class="nav-link {{ Route::current()->getName() == 'animes.create' ? 'active' : '' }} btn btn-link text-white" href="{{ route('animes.create') }}">New Anime</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::current()->getName() == 'studios.create' ? 'active' : '' }} btn btn-link text-white" href="{{ route('studios.create') }}">New Studio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::current()->getName() == 'status.create' ? 'active' : '' }} btn btn-link text-white" href="{{ route('status.create') }}">New Status</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::current()->getName() == 'mangas.create' ? 'active' : '' }} btn btn-link text-white" href="{{ route('mangas.create') }}">New Manga</a>

@@ -27,26 +27,18 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="score" class="form-label fw-bold text-info">➤ Score</label>
                 <input type="number" class="form-control" name="score" id="score" step="0.01">
                 @error('score')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
             <div class="mb-3">
                 <label for="studio" class="form-label fw-bold text-info">➤ Studio</label>
                 <select class="form-select" name="studio" id="studio">
                     @foreach ($studios as $studio)
                         <option value="{{ $studio->id }}">{{ $studio->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="statu" class="form-label fw-bold text-info">➤ Status</label>
-                <select class="form-select" name="statu" id="statu">
-                    @foreach ($status as $statu)
-                        <option value="{{ $statu->id }}">{{ $statu->name }}</option>
                     @endforeach
                 </select>
             </div>

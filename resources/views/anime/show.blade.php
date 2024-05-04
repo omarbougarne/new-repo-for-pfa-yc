@@ -8,27 +8,48 @@
     </div>
     <div class="col-md-5">
         <div>
-            <span class="h3">{{ $anime->title }}</span>
+            <span class="text-white fw-bold">{{ $anime->title }}</span>
             <br>
-            <span class="badge bg-primary">{{ $anime->statu->name }}</span>
-            <i class="fa fa-star text-warning"></i> {{ $anime->score }}
+
+            @if(auth()->check())
+                @php
+                    $userRating = auth()->user()->animes()->find($anime->id)->pivot->rating ?? null;
+                @endphp
+                @if($userRating)
+                <span class="badge bg-info">Your Rating: {{ $userRating }}</span><i class="fa fa-star text-warning"></i>
+                @endif
+            @endif
         </div>
         <div class="mt-2">
-            <strong>Synopsis: </strong> <br>
-            <span>{{ $anime->synopsis }}</span>
+            <strong class="text-white">Synopsis: </strong> <br>
+            <span class="fw-bold text-white">{{ $anime->synopsis }}</span>
         </div>
-        {{-- <div class="mt-2">
-            <strong>Episodes: </strong> {{ $anime->episodes }}
-        </div> --}}
         <div class="row mt-2">
             <div class="col-sm-6">
-                <strong>Studio: </strong><a class="link-studio" href="{{ route('studios.show', $anime->studio->id) }}">{{ $anime->studio->name }}</a>
+                <strong class="text-white fw-bold">Studio: </strong><a class="link-studio fw-bold" style="color:cyan" href="{{ route('studios.show', $anime->studio->id) }}">{{ $anime->studio->name }}</a>
             </div>
         </div>
+
+
+        <form method="post" action="{{ route('animes.updatestatus', $anime->id) }}">
+            @csrf
+            @method('PATCH')
+            <div class="input-group">
+                <select name="status" class="form-control" id="status">
+                    <option value="plan to watch" {{ $anime->status == 'plan to watch' ? 'selected' : '' }}>Plan to Watch</option>
+                    <option value="completed" {{ $anime->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                    <option value="dropped" {{ $anime->status == 'dropped' ? 'selected' : '' }}>Dropped</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Update Status</button>
+            </div>
+        </form>
+
+
+        @can('isAdmin')
+
+
         <ul class="nav justify-content-center mt-3">
-            <li class="nav-item">
-                <a href="{{ route('animes.index') }}" class="button-18 color-default">Show</a>
-            </li>
+
 
                 &nbsp;
                 <li class="nav-item">
@@ -43,16 +64,51 @@
                 </li>
 
         </ul>
+        @endcan
     </div>
-    <div class="col-md-4">
-        <h3>Ratings</h3>
+
+        <div class="col-md-4">
+            <h3 class="fw-bold text-white">Ratings</h3>
+            <hr>
+            <form method="post" action="{{ route('animes.adduserrating', $anime->id) }}">
+                @csrf
+                <div class="input-group">
+                    <input  name="rating" id="rating" class="form-control" placeholder="Add Rating"/>
+        <button type="submit" class="btn btn-success ">
+            Add
+        </button>
+                </div>
+            </form>
+            <br>
+            <form method="post" action="{{ route('animes.edituserrating', $anime->id) }}">
+                @csrf
+                @method('PATCH')
+                <div class="input-group">
+                    <input name="rating" id="rating" class="form-control " placeholder="Edit Rating"/>
+                    <button type="submit" class="btn btn-primary">
+                        Edit
+                    </button>
+                </div>
+            </form>
+            <br>
+            <form method="post" action="{{ route('animes.deleteuserrating', $anime->id) }}">
+                @csrf
+                @method('DELETE')
+                <div class="input-group">
+                    <button type="submit" class="btn btn-danger">
+                        Delete
+                    </button>
+                </div>
+            </form>
+        </div>
+
         <hr>
         <form method="post" action="{{ isset($comment->id) ? route('comments.update', $comment->id) : route('animes.comments.store', $anime->id) }}">
             @csrf
             @if(isset($comment->id))
                 @method('PATCH')
             @endif
-            <label for="body">Make a comment:</label>
+            <label for="body" class="text-white">Make a comment:</label>
             <div class="input-group">
                 <input name="body" id="body" class="form-control col-10" value="{{ $comment->body }}"/>
                 <button type="submit" class="btn btn-primary col-2">
@@ -60,7 +116,7 @@
                 </button>
             </div>
         </form>
-        <h4>Comments</h4>
+        <h4 class="fw-bold text-white">Comments</h4>
         <div class="comment-section overflow-auto mt-3" style="max-height: 450px;">
             @foreach($anime->comments as $comment)
     <div class="card border border-3 border-secondary mb-3">
@@ -88,7 +144,7 @@
 </div>
 </div>
 <div class="mb-3">
-    <h3 class="mb-3">Episodes</h3>
+    <h3 class="mb-3 fw-bold text-white">Episodes</h3>
     @foreach($anime->episodes as $episode)
         <div class="card border border-3 border-secondary mb-3">
             <div class="card-body">
