@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-    <h2 class="text-center">Create Manga</h2>
+    <h2 class="text-center text-white">Create Manga</h2>
     <hr>
     <div class="row">
         <form method="POST" action="{{ route('mangas.store') }}">

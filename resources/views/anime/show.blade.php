@@ -158,11 +158,13 @@
     @endforeach
 </div>
 
+    @can('isAdmin')
+
 
     <div class="mt-3">
         <a href="{{ route('episodes.create', ['anime_id' => $anime->id]) }}" class="btn btn-success">Add New Episode</a>
     </div>
-
+    @endcan
 </div>
 
 @endsection

@@ -138,8 +138,9 @@ public function store(Request $request)
             $anime->image = $request->image->store('images', 'public');
         }
 
-        // Get the manga name based on the manga_id
-        $mangaName = Manga::findOrFail($request->input('manga_id'))->name;
+        // Attach manga_id to the anime
+        $anime->manga_id = $request->input('manga_id');
+
         $anime->studio_id = $request->input('studio');
         $anime->save();
 
@@ -149,6 +150,7 @@ public function store(Request $request)
         dd($e->getMessage());
     }
 }
+
 public function showUserRating($id)
 {
     // Find the anime

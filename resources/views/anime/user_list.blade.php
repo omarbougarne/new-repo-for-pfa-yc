@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $user->name }}'s Anime List</h1>
+        <h1 class="fw-bold text-white">{{ $user->name }}'s Anime List</h1>
         <div class="row">
             @foreach ($animes as $anime)
                 <div class="col-md-4">

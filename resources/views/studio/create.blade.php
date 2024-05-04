@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-    <h2 class="text-center">New Studio</h2>
+    <h2 class="text-center fw-bold text-white">New Studio</h2>
     <hr>
     <div class="row">
         <form method="POST" action="{{ route('studios.store') }}" enctype="multipart/form-data">

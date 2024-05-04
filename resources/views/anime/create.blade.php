@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-    <h2 class="text-center fw-bold">New Anime</h2>
+    <h2 class="text-center fw-bold text-white">New Anime</h2>
     <hr>
     <form class="row g-3" method="POST" action="{{ route('animes.store') }}" enctype="multipart/form-data">
         @csrf
