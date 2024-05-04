@@ -143,17 +143,18 @@
             @endforeach
 </div>
 </div>
-<div class="mb-3">
-    <h3 class="mb-3 fw-bold text-white">Episodes</h3>
+<div class="mb-3" ">
+    <h3 class="mb-3 fw-bold text-white">Episodes:</h3>
     @foreach($anime->episodes as $episode)
-        <div class="card border border-3 border-secondary mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Episode {{ $episode->number }}: {{ $episode->title }}</h5>
-                <p class="card-text">Air Date: {{ $episode->air_date ?? 'N/A' }}</p>
-                <p class="card-text">Summary: {{ $episode->summary ?? 'N/A' }}</p>
-                <a href="https://www.crunchyroll.com/" class="btn btn-success" target="_blank">Watch on Crunchyroll</a>
-            </div>
+    <div class="card border border-3 border-secondary mb-3" style="background: linear-gradient(to bottom right, #808080, #00FFFF);">
+        <div class="card-body">
+            <h5 class="card-title fw-bold text-white">Episode {{ $episode->number }}: {{ $episode->title }}</h5>
+            <p class="card-text fw-bold text-white">Air Date: {{ $episode->air_date ?? 'N/A' }}</p>
+            <p class="card-text fw-bold text-white">Summary: {{ $episode->summary ?? 'N/A' }}</p>
+            <a href="https://www.crunchyroll.com/" class="btn btn-success" target="_blank">Watch on Crunchyroll</a>
         </div>
+    </div>
+
     @endforeach
 </div>
 
